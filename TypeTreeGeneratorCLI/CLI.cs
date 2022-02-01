@@ -145,7 +145,7 @@ namespace TypeTreeGeneratorCLI
                     sb.AppendLine(typeDef.Name);
                     foreach (TypeTreeNode node in nodes)
                     {
-                        sb.AppendLine($"{node.m_Level}\t{node.m_Type}\t{node.m_Name}\t{node.m_MetaFlag}");
+                        sb.AppendLine($"{node.level}\t{node.type}\t{node.name}\t{node.meta_flag}");
                     }
 
                     sb.AppendLine("");
@@ -204,10 +204,10 @@ namespace TypeTreeGeneratorCLI
                     s.Write(BitConverter.GetBytes((UInt32)nodes.Count), (int)s.Length, 4);
                     foreach (var node in nodes)
                     {
-                        s.Write(BitConverter.GetBytes(node.m_Level), (int)s.Length, 4);
-                        writeString(s, node.m_Type);
-                        writeString(s, node.m_Name);
-                        s.Write(BitConverter.GetBytes(node.m_MetaFlag), (int)s.Length, 4);
+                        s.Write(BitConverter.GetBytes(node.level), (int)s.Length, 4);
+                        writeString(s, node.type);
+                        writeString(s, node.name);
+                        s.Write(BitConverter.GetBytes(node.meta_flag), (int)s.Length, 4);
                     }
                 }
                 catch { continue; }
